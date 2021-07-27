@@ -22,10 +22,10 @@ func TestNextToken(t *testing.T) {
 		{token.RBRACE, "}"},
 		{token.COMMA, ","},
 		{token.SEMICOLON, ";"},
-		{token.EOF, "AAKHAR-E-KHAT"}
+		{token.EOF, "AAKHAR-E-KHAT"},
 	}
 
-	l = New(input)
+	l := New(input)
 
 	for i, tt := range tests {
 		tok := l.NextToken()
@@ -34,17 +34,17 @@ func TestNextToken(t *testing.T) {
 			t.Fatalf("tests[%d] - tokentype wrong. expected=%, got=%q", i, tt.expectedType, tok.Type)
 		}
 
-		if tok.Type != tt.expectedLiteral {
+		if tok.Literal != tt.expectedLiteral {
 			t.Fatalf("tests[%d] - literal wrong. expected=%, got=%q", i, tt.expectedLiteral, tok.Literal)
 		}
 	}
 }
 
-func TestNextToken(t *testing.T) {
+func TestToken(t *testing.T) {
 	input := `besaaz five = 5;`
 
 		tests := []struct {
-			expectedType token.TokenType,
+			expectedType token.TokenType
 			expectedLiteral string
 		}{
 			{token.LET, "besaaz"},
